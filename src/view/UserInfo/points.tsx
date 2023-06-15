@@ -26,7 +26,7 @@ export const PointsUser = ({ handleClick }: ButtonProps) => {
           <UpIcon />
         </div>
         <input
-          className="br5"
+          className="br5 text-center"
           type="number"
           value={numberValue}
           onChange={(e) => updateData(parseInt(e.target.value))}

@@ -1,7 +1,9 @@
 import "./App.css";
+import { SpeedBar } from "./components/speed";
 import { Table } from "./components/table";
 import { TrophyIcon } from "./svgImages";
-import { ChartView } from "./view/Chat";
+import { Chat } from "./view/Chat";
+// import { ChartView } from "./view/Chat";
 import { UserInfo } from "./view/UserInfo";
 
 function App() {
@@ -12,7 +14,7 @@ function App() {
           <UserInfo />
         </div>
       </header>
-      <div className="d-flex">
+      <div>
         <Table
           image={<TrophyIcon />}
           list={[
@@ -22,8 +24,11 @@ function App() {
           header={["user", "amount"]}
           title="test"
         />
-        <ChartView />
+
+        {/* <ChartView /> */}
       </div>
+      <SpeedBar />
+      <Chat />
     </div>
   );
 }

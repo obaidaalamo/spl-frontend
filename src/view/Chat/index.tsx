@@ -1,42 +1,55 @@
-import React, { Component, useEffect, useState } from "react";
-import Chart from "react-apexcharts";
+import { useContext, useEffect, useState } from "react";
+import { ChatIcon } from "../../svgImages";
+import { WebsocketContexts } from "../../Contexts/WebsoketContexts";
+// import {io} from "socket.io"
 
-export const ChartView = () => {
-  const [options, setOption] = useState<any>({
-    chart: {
-      id: "basic-bar",
-    },
-    xaxis: {
-      categories: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    },
-  });
-  const [series, setSeries] = useState<any>([
-    {
-      name: "series-1",
-      data: [1, 2, 3, 4, 5, 6, 7, 10],
-    },
+export const Chat = () => {
+  const socket = useContext(WebsocketContexts);
+
+  type Messages = {
+    user: String;
+    message: String;
+  };
+  const [messagesList, setMessagesList] = useState<Messages[]>([
+    { user: "user1", message: "hi 1" },
+    { user: "user2", message: "hi 2" },
+    { user: "user3", message: "hi 3" },
   ]);
 
   useEffect(() => {
-    // const interval = setInterval(() => {
-    //   const val = Math.floor(Math.random() * (100 - 30 + 1)) + 30;
-    //   let array = [...series, val];
-    //   array.shift();
-    //   setSeries(array);
-    //   console.log(array);
-    // }, 2000);
-    // return () => {
-    //   window.clearInterval(interval); // clear the interval in the cleanup function
-    // };
-  }, [series]);
-
+    socket.on("connect", () => {
+      console.log("connected");
+    });
+    socket.on("onMessage", (data) => {
+      console.log(data);
+    });
+    return () => {
+      socket.off("connect");
+      socket.off("onMessage");
+    };
+  }, []);
   return (
-    <div className="app">
-      <div className="row">
-        <div className="mixed-chart">
-          {/* {options && series && (
-            <Chart options={options} data={series} type="line" width="500" />
-          )} */}
+    <div className="w-color p20">
+      <div className="d-flex g20  mb10">
+        <div>
+          <ChatIcon />
+        </div>
+        <div>Chat</div>
+      </div>
+      <div className=" card-bg mbr br10 ">
+        <div className="messages-container p20">
+          {messagesList.map((data: Messages, index: number) => {
+            return (
+              <div key={index} className="d-flex g10 mb10">
+                <div>{data.user}</div>
+                <div>{data.message}</div>
+              </div>
+            );
+          })}
+        </div>
+        <div className="d-flex g10 card-bg2 p20 ">
+          <input className="w-100" />
+          <button>Send</button>
         </div>
       </div>
     </div>
