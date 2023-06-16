@@ -14,7 +14,10 @@ export const MultiplierUser = ({ handleClick }: ButtonProps) => {
     handleClick(value);
   };
   return (
-    <div className="d-flex pl10 pr10 flex-direction-column text-align-center card-bg br10 mbr justify-content-center">
+    <div
+      className="d-flex align-items-center w-100 pl10 pr10 flex-direction-column text-align-center card-bg br10 mbr justify-content-center"
+      style={{ height: 75 }}
+    >
       <div className="w-color pt10">Multiplier</div>
       <div className="d-flex align-items-center pl10 pr10 pb10 g10">
         <div

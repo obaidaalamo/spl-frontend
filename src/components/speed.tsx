@@ -2,8 +2,8 @@ import { SpeedIcon } from "../svgImages";
 
 export const SpeedBar = () => {
   return (
-    <div className="w-color p20">
-      <div className="d-flex g20  mb10">
+    <div className="w-color pt20 pb20">
+      <div className="d-flex g20 align-items-center mb10">
         <div>
           <SpeedIcon />
         </div>
@@ -14,7 +14,7 @@ export const SpeedBar = () => {
           type="range"
           min="1"
           max="5"
-          //   value="1"
+          defaultValue="1"
           className="slider"
           id="myRange"
         />

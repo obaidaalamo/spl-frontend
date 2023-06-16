@@ -7,6 +7,7 @@ body {
 }
 
 .s-color {
+  color: #7e7d7d;
 }
 
 .g-color {
@@ -16,6 +17,7 @@ body {
 }
 
 input {
+  width: 50%;
   padding: 0.375rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.5715;
@@ -29,7 +31,7 @@ input {
 }
 
 button {
-  padding: 20px;
+  padding: 11px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +43,7 @@ button {
   font-weight: 500;
   background: linear-gradient(#a855f7, #a855f7) padding-box,
     linear-gradient(#a855f7, #e9d5ff 75%, transparent) border-box;
-  
+
   color: rgb(203 213 225 / var(--tw-text-opacity));
 }
 
@@ -381,6 +383,24 @@ input.text-center {
 .br25 {
   border-radius: 25px;
 }
+.App {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  padding: 20px;
+  /* height: 100vh; */
+  max-width: 1200px;
+}
+@media only screen and (max-width: 1200px) {
+  .container {
+    padding-top: 60px;
+    height: 100vh !important;
+  }
+}
 
 /* app style*/
 .App-header {
@@ -427,11 +447,15 @@ input.text-center {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background:  #a855f7;
+  background: #a855f7;
   cursor: pointer;
 }
 
 .messages-container {
   height: 90px;
   overflow-y: scroll;
+}
+
+.canvasjs-chart-credit {
+  visibility: hidden;
 }

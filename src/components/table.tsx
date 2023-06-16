@@ -10,16 +10,16 @@ export const Table = ({
   header: Array<string>;
 }) => {
   return (
-    <div className="w-color p20">
-      <div className="d-flex g20  mb10">
+    <div className="w-color pt20  ">
+      <div className="d-flex g20 align-items-center mb10">
         <div>{image}</div>
         <div>{title}</div>
       </div>
-      <div>
+      <div className="mbr br10">
         <div className="d-flex">
           {header.map((data: any, index: number) => {
             return (
-              <div key={index} className="w-100 mb10">
+              <div key={index} className="w-100 mb10 p10">
                 {data}
               </div>
             );
