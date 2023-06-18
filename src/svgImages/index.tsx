@@ -187,3 +187,79 @@ export const RankingIcon = () => {
     </svg>
   );
 };
+
+export const BackGroundImage = () => {
+  return (
+    <svg
+      className="background-image"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width="2146"
+      height="744"
+    >
+      <defs>
+        <linearGradient id="d" x1="43.176%" x2="50%" y1="12.436%" y2="97.744%">
+          <stop offset="0%" stopColor="#A855F7"></stop>
+          <stop offset="100%" stopColor="#6366F1"></stop>
+        </linearGradient>
+        <linearGradient id="f" x1="19.609%" x2="50%" y1="14.544%" y2="100%">
+          <stop offset="0%" stopColor="#6366F1"></stop>
+          <stop offset="100%" stopColor="#6366F1" stopOpacity="0"></stop>
+        </linearGradient>
+        <filter
+          id="e"
+          width="145.2%"
+          height="187%"
+          x="-22.6%"
+          y="-43.5%"
+          filterUnits="objectBoundingBox"
+        >
+          <feGaussianBlur in="SourceGraphic" stdDeviation="50"></feGaussianBlur>
+        </filter>
+        <filter
+          id="g"
+          width="165.1%"
+          height="170.3%"
+          x="-32.5%"
+          y="-35.1%"
+          filterUnits="objectBoundingBox"
+        >
+          <feGaussianBlur in="SourceGraphic" stdDeviation="50"></feGaussianBlur>
+        </filter>
+        <radialGradient
+          id="c"
+          cx="50%"
+          cy="100%"
+          r="77.678%"
+          fx="50%"
+          fy="100%"
+          gradientTransform="matrix(0 -1 .37746 0 .123 1.5)"
+        >
+          <stop offset="0%" stopColor="#E9D5FF"></stop>
+          <stop offset="22.35%" stopColor="#A855F7"></stop>
+          <stop offset="100%" stopColor="#0F172A" stopOpacity="0"></stop>
+        </radialGradient>
+        <path id="a" d="M0 0h2440v921H0z"></path>
+      </defs>
+      <g fill="none" fillRule="evenodd" transform="translate(-140 -177)">
+        <mask id="b" fill="#fff">
+          <use xlinkHref="#a"></use>
+        </mask>
+        <g mask="url(#b)">
+          <path fill="url(#c)" d="M0 0h2440v921H0z"></path>
+          <path
+            fill="url(#d)"
+            fillRule="nonzero"
+            d="M1975.72 781.763a12.28 12.28 0 00-13.042-1.568 12.323 12.323 0 00-7.014 11.129v98.57h-430.368c-6.79 0-12.296 5.516-12.296 12.321v98.57c0 6.805 5.505 12.321 12.296 12.321h430.368v98.57a12.323 12.323 0 007.014 11.129 12.276 12.276 0 0013.042-1.568l196.74-160.176a12.33 12.33 0 004.54-9.561 12.33 12.33 0 00-4.54-9.561l-196.74-160.176z"
+            filter="url(#e)"
+          ></path>
+          <path
+            fill="url(#f)"
+            d="M913 274l461 369-284 58z"
+            filter="url(#g)"
+          ></path>
+        </g>
+      </g>
+    </svg>
+  );
+};

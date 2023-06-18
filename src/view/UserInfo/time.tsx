@@ -8,7 +8,7 @@ export const TimeUser = ({ time }: { time: string }) => {
     >
       <div className="d-flex align-items-center pl10 pr10 pb10 g10 w-color mt10">
         <TimeIcon />
-        <div className="w-100">{time}</div>
+        <div className="w-100 thicker">{time}</div>
       </div>
     </div>
   );

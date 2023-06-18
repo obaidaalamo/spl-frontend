@@ -8,7 +8,7 @@ export const AmountUser = ({ userAmount }: { userAmount: string }) => {
     >
       <div className="d-flex  align-items-center pl10 pr10 pb10 g10 w-color mt10">
         <MedalIcon />
-        <div className="w-100">{userAmount}</div>
+        <div className="w-100 thicker">{userAmount}</div>
       </div>
     </div>
   );

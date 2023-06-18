@@ -1,13 +1,13 @@
 import { SpeedIcon } from "../svgImages";
 
-export const SpeedBar = () => {
+export const SpeedBar = ({ speed }: { speed: (time: number) => void }) => {
   return (
     <div className="w-color pt20 pb20">
       <div className="d-flex g20 align-items-center mb10">
         <div>
           <SpeedIcon />
         </div>
-        <div>Speed</div>
+        <div className="thicker">Speed</div>
       </div>
       <div className="p20 card-bg mbr br10 ">
         <input
@@ -15,6 +15,9 @@ export const SpeedBar = () => {
           min="1"
           max="5"
           defaultValue="1"
+          onChange={(e) => {
+            speed(parseInt(e.target.value));
+          }}
           className="slider"
           id="myRange"
         />

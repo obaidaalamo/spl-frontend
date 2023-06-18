@@ -1,11 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { ChatIcon } from "../../svgImages";
+import { WebsocketContexts } from "../../Contexts/WebsoketContexts";
+import { Socket } from "socket.io-client";
 // import {io} from "socket.io"
-import { connectUser } from "../../utils/connectUser";
 
-export const Chat = () => {
+export const Chat = ({ user }: { user: string }) => {
   const [message, setMessage] = useState<string>("");
-  const [connected, setConnected] = useState<boolean>(false);
 
   type Messages = {
     user: String;
@@ -13,36 +13,39 @@ export const Chat = () => {
   };
 
   const [messagesList, setMessagesList] = useState<any>([]);
-  const socket = useContext(connectUser("obaida"));
+  const socket: Socket = useContext(WebsocketContexts);
 
   useEffect(() => {
-    if (!connected) {
-      socket.on("connect", () => {
-        setConnected(true);
-        console.log("connected");
-      });
+    socket.on("connect", () => {
+      console.log("connected");
+    });
 
-      socket.on("onMessage", (data) => {
-        console.log(data);
-        if (data.msg === "New Message") {
-          const newMessage: any = { user: "obaida", message: data.content };
+    socket.on("onMessage", (data: any) => {
+      if (data.msg === "New Message") {
+        const newMessage: any = {
+          user: data.content.user,
+          message: data.content.message,
+        };
+        //@ts-ignore
+        setMessagesList((oldMessage) => [...oldMessage, newMessage]);
+      }
+    });
 
-          //@ts-ignore
-          setMessagesList((oldMessage) => [...oldMessage, newMessage]);
-        }
-      });
-
-      return () => {
-        socket.off("connect");
-        socket.off("onMessage");
-      };
-    }
-  }, []);
+    return () => {
+      socket.off("connect");
+      socket.off("onMessage");
+    };
+  }, [socket]);
 
   window.setInterval(function () {
     let elem: any = document.getElementById("messages-div");
     elem.scrollTop = elem.scrollHeight;
   }, 5000);
+
+  const sendMessageAction = () => {
+    socket.emit("newMessage", { user: user, message: message });
+    setMessage("");
+  };
 
   return (
     <div className="w-color">
@@ -50,7 +53,7 @@ export const Chat = () => {
         <div>
           <ChatIcon />
         </div>
-        <div>Chat</div>
+        <div className="thicker">Chat</div>
       </div>
       <div className=" card-bg mbr br10 ">
         <div id="messages-div" className="messages-container m20">
@@ -71,12 +74,17 @@ export const Chat = () => {
           <input
             className="w-100"
             value={message}
+            onKeyUp={(e) => {
+              if (e.key === "Enter") {
+                sendMessageAction();
+              }
+            }}
             onChange={(e) => setMessage(e.target.value)}
           />
           <button
+            className="p-cursor thicker"
             onClick={() => {
-              socket.emit("newMessage", message);
-              setMessage("");
+              sendMessageAction();
             }}
           >
             Send

@@ -2,6 +2,22 @@ body {
   background-color: #0f172a;
 }
 
+* {
+  font-family: Roboto, sans-serif;
+}
+
+.normal {
+  font-weight: normal;
+}
+
+.thick {
+  font-weight: bold;
+}
+
+.thicker {
+  font-weight: 1000;
+}
+
 .w-color {
   color: #fff;
 }
@@ -11,9 +27,11 @@ body {
 }
 
 .g-color {
+  color: #0bcb0b;
 }
 
 .r-color {
+  color: #fe3030;
 }
 
 input {
@@ -28,6 +46,15 @@ input {
   border-color: transparent;
   --tw-bg-opacity: 1;
   background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 button {
@@ -45,6 +72,10 @@ button {
     linear-gradient(#a855f7, #e9d5ff 75%, transparent) border-box;
 
   color: rgb(203 213 225 / var(--tw-text-opacity));
+}
+
+button:disabled {
+  background: #797979ee;
 }
 
 input.text-center {
@@ -458,4 +489,14 @@ input.text-center {
 
 .canvasjs-chart-credit {
   visibility: hidden;
+}
+
+.c-first-letter::first-letter {
+  text-transform: uppercase;
+}
+
+.background-image {
+  bottom: -55px;
+  position: absolute;
+  filter: blur(240px);
 }

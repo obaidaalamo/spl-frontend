@@ -8,7 +8,7 @@ export const UserName = ({ userName }: { userName: string }) => {
     >
       <div className="d-flex align-items-center pl10 pr10 pb10 g10 w-color mt10">
         <UserIcon />
-        <div className="w-100">{userName}</div>
+        <div className="w-100 c-first-letter thicker">{userName}</div>
       </div>
     </div>
   );
